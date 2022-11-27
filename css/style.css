@@ -40,6 +40,14 @@
   .menu li:hover {
     background-color: #0099cc;
   }
+
+  .form-field {
+    width : 80%;
+    border : 0px;
+    font-size: medium;
+    background-color: aquamarine;
+    margin : 5px;
+  }
   
   .aside {
     background-color: #33b5e5;

@@ -16,3 +16,21 @@ CREATE TABLE super_market.Product_subcategory (
     FOREIGN KEY (category) REFERENCES Product_category(code),
     PRIMARY KEY (code)
 ); 
+
+CREATE TABLE super_market.Super_market_brand (
+    code varchar(100) NOT NULL,
+    name varchar(255) NOT NULL,
+    PRIMARY KEY (code)
+); 
+
+CREATE TABLE super_market.Super_market_branch (
+    code varchar(100) NOT NULL,
+    name varchar(255) NOT NULL,
+    city varchar(255) NOT NULL,
+    postal_code int NOT NULL,
+    telephone_no int NOT NULL,
+    email varchar(255) NOT NULL,
+    brand varchar(100) NOT NULL,
+    FOREIGN KEY (code) REFERENCES Super_market_brand(brand),
+    PRIMARY KEY (code)
+); 

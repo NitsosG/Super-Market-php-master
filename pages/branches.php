@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+<?php include '../phpScripts/DbServices.php';?>
+<?php include '../phpScripts/FormElements.php';?>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="../css/style.css" />
 </head>
 <body>
 
 <div class="header">
-  <h1>Chania</h1>
+  <h1>Καταστήματα</h1>
 </div>
 
 <div class="row">
-  <div class="col-3 col-s-3 menu">
-    <ul>
-      <li>The Flight</li>
-      <li>The City</li>
-      <li>The Island</li>
-      <li>The Food</li>
-    </ul>
-  </div>
-
+  <?php include 'menu.php';?>
   <div class="col-6 col-s-9">
-    <h1>The City</h1>
-    <p>Chania is the capital of the Chania region on the island of Crete. The city can be divided in two parts, the old town and the modern city.</p>
+    <form>
+    <?php
+      inputFormField('Ταχυδρομικός κώδικας','TK');
+      inputFormSelect("Όνομα αλυσίδας","brand",brandSelection());
+      inputFormSelect("Κατάστημα","branch",branchSelection());
+    ?>
+    </form>
   </div>
 
   <div class="col-3 col-s-12">
@@ -37,9 +37,8 @@
   </div>
 </div>
 
-<div class="footer">
-  <p>Resize the browser window to see how the content respond to the resizing.</p>
-</div>
+<?php include 'footer.php';?>
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">   -->
 
 </body>
 </html>
