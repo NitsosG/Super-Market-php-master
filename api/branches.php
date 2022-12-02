@@ -1,20 +1,15 @@
 <?php
-header("Content-Type:application/json");
-$queryParamName = 'brandCode';
-if (isset($_GET[$queryParamName]) && $_GET[$queryParamName]!=""){
-    response(NULL, NULL, 200,"No Record Found");
-}
-else
-{
-    response(NULL, NULL, 400,"Invalid Request");
-}
+include '../phpScripts/DbServices.php';
+include '../phpScripts/FormElements.php';
 
-function response($order_id,$amount,$response_code,$response_desc){
-    $response['order_id'] = $order_id;
-    $response['amount'] = $amount;
-    $response['response_code'] = $response_code;
-    $response['response_desc'] = $response_desc;
-    // http_response_code($response_code);
-    $json_response = json_encode($response);
+header("Content-Type:text/html");
+$brandCodes = $_GET['brandCodes'];
+if (empty($brandCodes)){
+    http_response_code(400);
+    $json_response = json_encode("It's Not Ok");
     echo $json_response;
+    return;
 }
+http_response_code(200);
+echo checkbox("Καταστήματα","branches",branchSelectionFiltered($brandCodes), "test()");
+?>

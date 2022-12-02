@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="../css/style.css" />
+<script src="../js/jquery.min.js"></script>
+<script src="../js/main.js"></script>
 </head>
 <body>
 
@@ -16,13 +18,10 @@
 <div class="row">
   <?php include 'menu.php';?>
   <div class="col-6 col-s-9">
-    <form>
     <?php
-      inputFormField('Ταχυδρομικός κώδικας','TK');
-      inputFormSelect("Όνομα αλυσίδας","brand",brandSelection());
-      inputFormSelect("Κατάστημα","branch",branchSelection());
+      checkbox("Αλυσίδα","brands",brandSelection(),"getBranches()");
     ?>
-    </form>
+    <div id='branches-placeholder'></div>
   </div>
 
   <div class="col-3 col-s-12">
@@ -38,8 +37,6 @@
 </div>
 
 <?php include 'footer.php';?>
-<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">   -->
-
 </body>
 </html>
 

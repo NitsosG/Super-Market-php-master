@@ -1,11 +1,16 @@
 <?php 
 include 'DbConnection.php';
 
-function brandSelection(){
+function branchSelection(){
     return selection("SELECT code, name FROM Super_market_branch");
 }
 
-function branchSelection(){
+function branchSelectionFiltered($brandCodes){
+    $sqlFilter = converJsonListToSqlFilter($brandCodes);
+    return selection("SELECT code, name FROM Super_market_branch WHERE brand in (" . $sqlFilter . ")" );
+}
+
+function brandSelection(){
     return selection("SELECT code, name FROM Super_market_brand");
 }
 
@@ -19,5 +24,13 @@ function selection(string $query){
     $rows = $result->fetch_all(MYSQLI_ASSOC);
     $conn->close();
     return $rows;
+}
+
+function converJsonListToSqlFilter($codes){
+    $sqlFilter = "";
+        foreach ($codes as $code){
+            $sqlFilter .= "'" . $code . "',";
+        }
+    return rtrim($sqlFilter, ',');
 }
 ?>
