@@ -43,6 +43,7 @@ function productCheckbox($label, $class, $rows, $jsFunction){
         printf('<label for="%s">%s</label><br>',$row["code"],$row["description"]);
         echo '</div>';
     }
+    printf (' <button type="button" onclick="%s">Επιλογή</button>', $jsFunction);
     echo '</form>';
     echo '</div>';
 }

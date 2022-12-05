@@ -1,6 +1,5 @@
 <?php 
   session_start();
-  $_SESSION["branches"] = 'AB_1,MY_MARKET_2';
 ?>
 <!DOCTYPE html>
 <html>

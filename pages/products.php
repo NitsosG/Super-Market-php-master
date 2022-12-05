@@ -19,7 +19,13 @@
 </div> -->
 <div>
   <?php
-  $selectedBranches = branchSelectionByCode(explode (",", $_SESSION["branches"]));
+  $queryParamsStr = $_SERVER['QUERY_STRING'];
+  $queryParams = array();
+    foreach (explode ("&", $queryParamsStr) as $queryParam){
+        array_push($queryParams, str_replace("=checked", "", $queryParam));
+    }
+  $_SESSION["branches"] = $queryParams;
+  $selectedBranches = branchSelectionByCode($_SESSION["branches"]);
   echo "Επιλεγμένα υποκαταστήματα : ";
   foreach ($selectedBranches as $branch){
     echo $branch["name"] . ", ";
