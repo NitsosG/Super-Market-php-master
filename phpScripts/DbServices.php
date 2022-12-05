@@ -1,21 +1,38 @@
 <?php 
 include 'DbConnection.php';
+include 'Debug.php';
 
-function branchSelection(){
-    return selection("SELECT code, name FROM Super_market_branch");
+function branchSelection($brandCodes){
+    return selection("SELECT code, name FROM Super_market_branch WHERE brand in (" . convertArrayToSqlFilter($brandCodes) . ")" );
 }
 
-function branchSelectionFiltered($brandCodes){
-    $sqlFilter = converJsonListToSqlFilter($brandCodes);
-    return selection("SELECT code, name FROM Super_market_branch WHERE brand in (" . $sqlFilter . ")" );
+function branchSelectionByCode($branchCodes){
+    return selection("SELECT code,name FROM Super_market_branch WHERE code in (" . convertArrayToSqlFilter($branchCodes) . ")" );
 }
 
 function brandSelection(){
     return selection("SELECT code, name FROM Super_market_brand");
 }
 
-function productSelection(){
-    return selection("SELECT code,name FROM Product_category");
+function productCategorySelection(){
+    return selection("SELECT code,description as name FROM Product_category");
+}
+
+function productSubcategorySelection($category){
+    return selection("SELECT code,description as name FROM Product_subcategory WHERE category in (" . convertArrayToSqlFilter($category) . ")");
+}
+
+function productSelection($subcategories){
+    return selection("SELECT code,description, picture FROM Product WHERE subcategory in (" . convertArrayToSqlFilter($subcategories) . ")");
+}
+
+function productComparison($productCodes, $branchesCodes){
+    return selection("SELECT p.description,smb.name , pppb.price, p.picture FROM Product  p
+    JOIN Product_price_per_brand pppb ON p.code = pppb.product 
+    JOIN Super_market_branch smb ON smb.brand  = pppb.brand 
+    where p.code in (" . convertArrayToSqlFilter($productCodes) . ")
+    AND smb.code in (" . convertArrayToSqlFilter($branchesCodes) . ")
+    ORDER BY p.subcategory, p.code, pppb.price");
 }
 
 function selection(string $query){
@@ -26,11 +43,15 @@ function selection(string $query){
     return $rows;
 }
 
-function converJsonListToSqlFilter($codes){
+function convertArrayToSqlFilter($codes){
     $sqlFilter = "";
         foreach ($codes as $code){
             $sqlFilter .= "'" . $code . "',";
         }
     return rtrim($sqlFilter, ',');
 }
+
+// $prodC = array("DELTA_MILK");
+// $branchC = array("AB_1");
+// debug(productComparison($prodC,$branchC));
 ?>

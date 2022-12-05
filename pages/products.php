@@ -1,6 +1,5 @@
 <?php 
   session_start();
-  $_SESSION["branches"] = 'AB_1,MY_MARKET_2';
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,14 +17,25 @@
 <!-- <div class="header">
   <h1>Καταστήματα</h1>
 </div> -->
+<div>
+  <?php
+  $selectedBranches = branchSelectionByCode(explode (",", $_SESSION["branches"]));
+  echo "Επιλεγμένα υποκαταστήματα : ";
+  foreach ($selectedBranches as $branch){
+    echo $branch["name"] . ", ";
+  };
+  ?>
+</div>
 
 <div class="row">
   <!-- <?php include 'menu.php';?> -->
   <div class="col-6 col-s-9">
     <?php
-      checkbox("Αλυσίδα","brands",brandSelection(),"getBranches()");
+      checkbox("Κατηγορία","product-category",productCategorySelection(),"getProductSubcategories()");
     ?>
-    <div id='branches-placeholder'></div>
+    <div id="product-subcategories-placeholder"></div>
+    <div id="products-placeholder"></div>
+    <div id="products-comparison-placeholder"></div>
   </div>
 
   <!-- <div class="col-3 col-s-12">
