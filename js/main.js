@@ -23,6 +23,10 @@ function getItems(htmlClass,endpoint,placeholder){
             selectedItems.push(items[i].name);
         }
     }
+    if(selectedItems.length == 0){
+        alert("Επιλέξτε τουλάχιστον ένα");
+        return;
+    }
     var url = `../api/${endpoint}.php?items=${selectedItems}`;
     console.log(url);
     $.get(url, function(data){
@@ -30,6 +34,21 @@ function getItems(htmlClass,endpoint,placeholder){
     });
 }
 
+function validateBranchesForm() {
+    var elem = $('.branches');
+    var items = Array.from(elem);
+    var selectedItems = [];
+    for (let i = 0; i < items.length; i++) {
+        if(items[i].checked){
+            selectedItems.push(items[i].name);
+        }
+    }
+    if(selectedItems.length == 0){
+        alert("Επιλέξτε τουλάχιστον ένα");
+        return false;
+    }
+    return true;
+} 
 
 
 function test(){

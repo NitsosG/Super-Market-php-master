@@ -24,9 +24,9 @@
     <?php
       checkbox("Αλυσίδα","brands",brandSelection(),"getBranches()");
     ?>
-    <form action="products.php" method="get">
+    <form action="products.php" id="branches-form" onsubmit="return validateBranchesForm()" method="get">
       <div id='branches-placeholder'></div>
-      <input type="submit">
+      <input type="submit" >
     </form>
   </div>
 
