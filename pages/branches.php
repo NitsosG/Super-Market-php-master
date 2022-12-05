@@ -25,7 +25,10 @@
     <?php
       checkbox("Αλυσίδα","brands",brandSelection(),"getBranches()");
     ?>
-    <div id='branches-placeholder'></div>
+    <form action="products.php" method="get">
+      <div id='branches-placeholder'></div>
+      <input type="submit">
+    </form>
   </div>
 
   <!-- <div class="col-3 col-s-12">

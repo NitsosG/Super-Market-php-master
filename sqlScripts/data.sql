@@ -9,19 +9,19 @@ INSERT INTO Product_subcategory (code,description,category) VALUES ('Fruits','Φ
 -- Products
 -- Milk
 INSERT INTO Product (code,picture,description,subcategory) VALUES 
-                    ('EVGA_MILK','EVGA_MILK.png','Γάλα ΕΒΓΑ','Dairy_products');
+                    ('EVGA_MILK','EVGA_MILK.jpeg','Γάλα ΕΒΓΑ','Dairy_products');
 INSERT INTO Product (code,picture,description,subcategory) VALUES 
-                    ('DELTA_MILK','DELTA_MILK.png','Γάλα ΔΕΛΤΑ','Dairy_products');
+                    ('DELTA_MILK','DELTA_MILK.jpeg','Γάλα ΔΕΛΤΑ','Dairy_products');
 INSERT INTO Product (code,picture,description,subcategory) VALUES 
-                    ('AB_MILK','AB_MILK.png','Γάλα AB','Dairy_products');
+                    ('AB_MILK','AB_MILK.jpeg','Γάλα AB','Dairy_products');
 INSERT INTO Product (code,picture,description,subcategory) VALUES 
-                    ('SKLAVENITIS_MILK','SKLAVENITIS_MILK.png','Γάλα Σκλαβενίτης','Dairy_products');
+                    ('SKLAVENITIS_MILK','SKLAVENITIS_MILK.jpg','Γάλα Σκλαβενίτης','Dairy_products');
 INSERT INTO Product (code,picture,description,subcategory) VALUES 
-                    ('MY_MARKET_MILK','MY_MARKET_MILK.png','Γάλα My Market','Dairy_products');
+                    ('MY_MARKET_MILK','MY_MARKET_MILK.jpg','Γάλα My Market','Dairy_products');
 
 -- Fruit
 INSERT INTO Product (code,picture,description,subcategory) VALUES 
-                    ('RED_APPLE','RED_APPLE','Κόκκινο μήλο','Fruits');
+                    ('RED_APPLE','RED_APPLE.jpeg','Κόκκινο μήλο','Fruits');
 
 
 

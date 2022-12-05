@@ -25,7 +25,9 @@ function checkbox($label, $class, $rows, $jsFunction){
         printf('<input class="%s" type="checkbox" id="%s" name="%s" value="%s">', $class,$row["code"],$row["code"],"checked");
         printf('<label for="%s">%s</label><br>',$row["name"],$row["name"]);
     }
-    printf (' <button type="button" onclick="%s">Επιλογή</button>', $jsFunction);
+    if(!is_null($jsFunction)){
+        printf (' <button type="button" onclick="%s">Επιλογή</button>', $jsFunction);
+    }
     echo '</form>';
     echo '</div>';
 }
@@ -41,7 +43,6 @@ function productCheckbox($label, $class, $rows, $jsFunction){
         printf('<label for="%s">%s</label><br>',$row["code"],$row["description"]);
         echo '</div>';
     }
-    printf (' <button type="button" onclick="%s">Επιλογή</button>', $jsFunction);
     echo '</form>';
     echo '</div>';
 }
