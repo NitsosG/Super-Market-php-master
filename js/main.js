@@ -54,3 +54,22 @@ function validateBranchesForm() {
 function test(){
     alert("Ok!");
 }
+
+function addToCart(productId){
+    postBody = '{"item":"'+productId +'"}';
+    $.post("../api/cart.php",postBody ,function(data){
+        $("#cart-placeholder").html(data);
+    });;
+}
+
+function removeFromCart(productId){
+    postBody = '{"item":"'+productId +'"}';
+    $.ajax({
+        url: '../api/cart.php',
+        data : postBody,
+        type: 'DELETE',
+        success: function(data) {
+            $("#cart-placeholder").html(data);
+        }
+    });
+}

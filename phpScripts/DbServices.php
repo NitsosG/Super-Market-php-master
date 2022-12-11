@@ -27,7 +27,7 @@ function productSelection($subcategories){
 }
 
 function productComparison($productCodes, $branchesCodes){
-    return selection("SELECT p.description,smb.name , pppb.price, p.picture FROM Product  p
+    return selection("SELECT p.description,smb.brand ,smb.name, pppb.price, p.picture, p.code as productCode, smb.code as branch FROM Product  p
     JOIN Product_price_per_brand pppb ON p.code = pppb.product 
     JOIN Super_market_branch smb ON smb.brand  = pppb.brand 
     where p.code in (" . convertArrayToSqlFilter($productCodes) . ")
@@ -50,8 +50,4 @@ function convertArrayToSqlFilter($codes){
         }
     return rtrim($sqlFilter, ',');
 }
-
-// $prodC = array("DELTA_MILK");
-// $branchC = array("AB_1");
-// debug(productComparison($prodC,$branchC));
 ?>

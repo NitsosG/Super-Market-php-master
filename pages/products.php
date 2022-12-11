@@ -42,6 +42,14 @@
     <div id="product-subcategories-placeholder"></div>
     <div id="products-placeholder"></div>
     <div id="products-comparison-placeholder"></div>
+    <?php
+         echo '<div id="cart-placeholder">';
+         cartElements("Καλάθι","cartItem",$_SESSION["cart"], "removeFromCart");
+         echo '</div>';
+    ?>
+    <form action="checkout.php" id="checkout-form" method="get">
+      <input type="submit">Checkout</input>
+    </form>
   </div>
 
   <!-- <div class="col-3 col-s-12">

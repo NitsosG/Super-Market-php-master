@@ -57,3 +57,5 @@ INSERT INTO Product_price_per_brand (product,brand,price) VALUES ('AB_MILK','AB'
 INSERT INTO Product_price_per_brand (product,brand,price) VALUES ('DELTA_MILK','AB', 1.60);
 INSERT INTO Product_price_per_brand (product,brand,price) VALUES ('DELTA_MILK','SKLAVENITIS', 1.65);
 INSERT INTO Product_price_per_brand (product,brand,price) VALUES ('DELTA_MILK','MY_MARKET', 1.55);
+INSERT INTO Product_price_per_brand (product,brand,price) VALUES ('RED_APPLE','MY_MARKET', 0.95);
+INSERT INTO Product_price_per_brand (product,brand,price) VALUES ('RED_APPLE','SKLAVENITIS', 0.90);
