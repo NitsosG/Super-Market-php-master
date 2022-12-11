@@ -18,7 +18,7 @@
   <div class="col-6 col-s-9">
     <?php
       echo '<div id="cart-placeholder">';
-      cartElements("Καλάθι","cartItem",$_SESSION["cart"], "removeFromCart");
+      productComarisonElement("Καλάθι","cartItem",cartProducts($_SESSION["cart"]), "Αφαίρεση","removeFromCart");
       echo '</div>';
     ?>
   </div>

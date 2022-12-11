@@ -35,6 +35,17 @@ function productComparison($productCodes, $branchesCodes){
     ORDER BY p.subcategory, p.code, pppb.price");
 }
 
+function cartProducts($productIds){
+    $cartItems = array();
+    foreach($productIds as $productId){
+        $cartElemenent = explode ("#", $productId);
+        $productCodes = array($productCodes,$cartElemenent[0]);
+        $branchCodes = array($branchCodes,$cartElemenent[1]);
+        array_push($cartItems, productComparison($productCodes, $branchCodes)[0]);
+    }
+    return $cartItems;
+}
+
 function selection(string $query){
     $conn = DbConnection();
     $result = $conn->query($query);
@@ -50,4 +61,7 @@ function convertArrayToSqlFilter($codes){
         }
     return rtrim($sqlFilter, ',');
 }
-?>
+
+// $array = array("DELTA_MILK#SKLAVENITIS_1","DELTA_MILK#AB_2");
+// debug(cartProducts($array));
+// ?>

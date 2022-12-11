@@ -1,4 +1,5 @@
 <?php 
+
 function checkbox($label, $class, $rows, $jsFunction){
     echo '<div class="form-field">' ;
     echo $label . '<br>';    
@@ -30,7 +31,7 @@ function productCheckbox($label, $class, $rows, $jsFunction){
     echo '</div>';
 }
 
-function productComarisonElement($label, $class, $rows, $jsFunction){
+function productComarisonElement($label, $class, $rows, $buttonLabel,$jsFunction){
     echo '<div class="form-field">' ;
     echo $label . '<br>';    
     echo '<form id="' . $class . '">';
@@ -39,24 +40,11 @@ function productComarisonElement($label, $class, $rows, $jsFunction){
         printf('<img src="img/%s" alt="%s" width="50" height="50">',$row["picture"],$row["description"]);
         $productId = $row["productCode"] . '#' .$row["branch"] . '#' .$row["brand"];
         $jsFunctionWithParameters = $jsFunction."('" . $productId . "')";
-        printf (' <button type="button" onclick="%s">Επιλογή</button>', $jsFunctionWithParameters);
+        printf (' <button type="button" onclick="%s">%s</button>', $jsFunctionWithParameters, $buttonLabel);
         printf('<label> %s %s %s</label><br>', $row["description"], $row["price"], $row["branch"]);
         echo '</div>';
     }
     echo '</form>';
-    echo '</div>';
-}
-
-function cartElements($label, $class, $rows, $jsFunction){
-    echo '<div class="form-field">' ;
-    echo $label . '<br>';    
-    foreach ($rows as $row) {
-        echo '<div>';
-        printf ($row);
-        $jsFunctionWithParameters = $jsFunction."('" . $row . "')";
-        printf (' <button type="button" onclick="%s">Αφαίρεση</button>', $jsFunctionWithParameters);
-        echo '</div>';
-    }
     echo '</div>';
 }
 ?>

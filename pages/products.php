@@ -44,7 +44,7 @@
     <div id="products-comparison-placeholder"></div>
     <?php
          echo '<div id="cart-placeholder">';
-         cartElements("Καλάθι","cartItem",$_SESSION["cart"], "removeFromCart");
+         productComarisonElement("Καλάθι","cartItem",cartProducts($_SESSION["cart"]), "Αφαίρεση","removeFromCart");
          echo '</div>';
     ?>
     <form action="checkout.php" id="checkout-form" method="get">
@@ -61,5 +61,3 @@
 <!-- <?php include 'footer.php';?> -->
 </body>
 </html>
-
-

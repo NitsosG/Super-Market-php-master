@@ -11,5 +11,5 @@
          unset($_SESSION["cart"][$key]);
      }
    }
-   $html = cartElements("Καλάθι","cartItem",$_SESSION["cart"], "removeFromCart");
+   $html = productComarisonElement("Καλάθι","cartItem",cartProducts($_SESSION["cart"]), "Αφαίρεση","removeFromCart");
 ?>
