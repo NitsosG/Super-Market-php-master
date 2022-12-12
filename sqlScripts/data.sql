@@ -59,3 +59,7 @@ INSERT INTO Product_price_per_brand (product,brand,price) VALUES ('DELTA_MILK','
 INSERT INTO Product_price_per_brand (product,brand,price) VALUES ('DELTA_MILK','MY_MARKET', 1.55);
 INSERT INTO Product_price_per_brand (product,brand,price) VALUES ('RED_APPLE','MY_MARKET', 0.95);
 INSERT INTO Product_price_per_brand (product,brand,price) VALUES ('RED_APPLE','SKLAVENITIS', 0.90);
+
+-- Users
+INSERT INTO Users (username,password) VALUES ('Spyros','123');
+INSERT INTO Users (username,password) VALUES ('Giwrgos','123');

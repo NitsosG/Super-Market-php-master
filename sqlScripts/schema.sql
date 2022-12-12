@@ -51,3 +51,9 @@ CREATE TABLE super_market.Product_price_per_brand (
     FOREIGN KEY (product) REFERENCES Product(code),
     FOREIGN KEY (brand) REFERENCES Super_market_brand(code)
 ); 
+
+CREATE TABLE super_market.Users (
+    username varchar(200) NOT NULL,
+    password varchar(200) NOT NULL,
+    PRIMARY KEY (username)
+); 

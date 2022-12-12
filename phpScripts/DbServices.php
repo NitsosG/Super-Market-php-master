@@ -54,6 +54,13 @@ function selection(string $query){
     return $rows;
 }
 
+function countResults(string $query){
+    $conn = DbConnection();
+    $result = $conn->query($query);
+    $conn->close();
+    return mysqli_num_rows($result);
+}
+
 function convertArrayToSqlFilter($codes){
     $sqlFilter = "";
         foreach ($codes as $code){
@@ -62,6 +69,12 @@ function convertArrayToSqlFilter($codes){
     return rtrim($sqlFilter, ',');
 }
 
-// $array = array("DELTA_MILK#SKLAVENITIS_1","DELTA_MILK#AB_2");
-// debug(cartProducts($array));
-// ?>
+function authenticateUser($username, $password){
+    $isAuth = countResults("select * FROM Users where username = '" .$username. "' and password = '" .$password. "'");
+    if($isAuth == 1){
+        return true;
+    }
+    return false;
+}
+ 
+?>
