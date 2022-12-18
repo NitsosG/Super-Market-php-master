@@ -30,23 +30,33 @@
       </div>
       <div class="col-sm-4">
       </div>
-      </div>  
+      </div>
+      <div class="row">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-4">
+      <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          $productCode = $_POST['product-code'];
+          $productDescr = $_POST['product-description'];
+          $productSubCategory = $_POST['product-subcategory'];
+          if(isset($_FILES["product-img"]) &&
+          $_FILES["product-img"]["error"] == 0){
+          $filename = basename($_FILES["product-img"]["name"]);
+          $target_file = "../img/" . $filename;
+          move_uploaded_file($_FILES["product-img"]["tmp_name"], $target_file);
+          try{
+            insertProduct($productCode, $productDescr, $filename, $productSubCategory);
+            alertSuccess();
+          }catch(Exception $e){
+            alertError($productCode);
+          }
+          
+        }
+      }
+      ?>
+      </div> 
+      </div>
       </div>
     </body>
 </html>
-
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $productCode = $_POST['product-code'];
-  $productDescr = $_POST['product-description'];
-  $productSubCategory = $_POST['product-subcategory'];
-  if(isset($_FILES["product-img"]) &&
-		$_FILES["product-img"]["error"] == 0){
-      $filename = basename($_FILES["product-img"]["name"]);
-      $target_file = "../img/" . $filename;
-      move_uploaded_file($_FILES["product-img"]["tmp_name"], $target_file);
-      insertProduct($productCode, $productDescr, $filename, $productSubCategory);
-    }
-  
-}
-?>

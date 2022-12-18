@@ -31,20 +31,32 @@
       </div>
       <div class="col-sm-4">
       </div>
+      </div>
+      <div class="row">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-4">
+      <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $brand = $_POST['brand'];
+            $branchCode = $_POST['branch-code'];
+            $branchName = $_POST['branch-name'];
+            $branchCity = $_POST['branch-city'];
+            $branchPostCode = $_POST['branch-postal-code'];
+            $branchTel = $_POST['branch-tel'];
+            $branchEmail = $_POST['branch-email'];
+          try{
+            insertBranch($branchCode, $branchName, $branchCity, $branchPostCode, $branchTel,$branchEmail, $brand);
+            alertSuccess();
+          }catch(Exception $e){
+            alertError($branchCode);
+          }
+          
+        }
+      ?>
+      </div> 
+      </div>
       </div>  
       </div>
     </body>
 </html>
-
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $brand = $_POST['brand'];
-  $branchCode = $_POST['branch-code'];
-  $branchName = $_POST['branch-name'];
-  $branchCity = $_POST['branch-city'];
-  $branchPostCode = $_POST['branch-postal-code'];
-  $branchTel = $_POST['branch-tel'];
-  $branchEmail = $_POST['branch-email'];
-  insertBranch($branchCode, $branchName, $branchCity, $branchPostCode, $branchTel,$branchEmail, $brand);
-}
-?>

@@ -1,7 +1,18 @@
 <?php
-    include 'DbServices.php';
-    include 'FormElements.php';
-    //debug(cartProducts(array("DELTA_MILK#SKLAVENITIS_2")));
-   debug (productComarisonElement("Καλάθι","cartItem",cartProducts(array("DELTA_MILK#SKLAVENITIS_2")), "removeFromCart"));
+   function alert($msg){
+    echo "<script>alert('H καταχώρηση με κωδικό: " . $msg . " υπάρχει ήδη')</script>"; 
+   }
+
+   function alertSuccess(){
+    echo '<div class="alert alert-success">
+            <strong> Επιτυχής καταχώρηση! </strong>
+        </div>';
+   }
+
+   function alertError($msg){
+    echo '<div class="alert alert-danger">
+            <strong>H καταχώρηση με κωδικό: ' . $msg . ' υπάρχει ήδη!</strong>
+        </div>';
+   }
     
 ?>

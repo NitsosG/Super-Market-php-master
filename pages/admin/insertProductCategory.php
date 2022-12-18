@@ -26,15 +26,28 @@
       </div>
       <div class="col-sm-4">
       </div>
-      </div>  
+      </div> 
+      <div class="row">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-4">
+      <?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          $brandCode = $_POST['product-category-code'];
+          $brandName = $_POST['product-category-name'];
+          try{
+            insertProductCategory($brandCode, $brandName);
+            alertSuccess();
+          }catch(Exception $e){
+            alertError($brandCode);
+          }
+          
+        }
+      ?>
+      </div> 
+      </div>
       </div>
     </body>
 </html>
 
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $brandCode = $_POST['product-category-code'];
-  $brandName = $_POST['product-category-name'];
-  insertProductCategory($brandCode, $brandName);
-}
-?>
+

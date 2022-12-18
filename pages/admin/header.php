@@ -6,6 +6,7 @@
 <?php 
   include '../../phpScripts/DbServices.php';
   include '../../phpScripts/FormElements.php';
+  include '../../phpScripts/Util.php';
 
   session_start();
 
