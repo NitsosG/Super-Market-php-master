@@ -79,6 +79,19 @@ function insertProductSubcategory($category,$code, $name){
                      '". $category ."')");
 }
 
+
+function insertBrand($code, $name){
+    executeQuery("INSERT INTO Super_market_brand (code,name) VALUES 
+                    ('". $code ."',
+                     '". $name ."')");
+}
+
+function insertProductCategory($code, $description){
+    executeQuery("INSERT INTO Product_category (code,description) VALUES 
+                    ('". $code ."',
+                     '". $description ."')");
+}
+
 function cartProducts($productIds){
     $cartItems = array();
     foreach($productIds as $productId){
