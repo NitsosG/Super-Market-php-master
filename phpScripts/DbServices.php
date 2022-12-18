@@ -22,9 +22,19 @@ function productSubcategorySelection($category){
     return selection("SELECT code,description as name FROM Product_subcategory WHERE category in (" . convertArrayToSqlFilter($category) . ")");
 }
 
+
+function allSubcategorySelection(){
+    return selection("SELECT code,description as name FROM Product_subcategory");
+}
+
 function productSelection($subcategories){
     return selection("SELECT code,description, picture FROM Product WHERE subcategory in (" . convertArrayToSqlFilter($subcategories) . ")");
 }
+
+function allProductSelection(){
+    return selection("SELECT code,description as name FROM Product");
+}
+
 
 function productComparison($productCodes, $branchesCodes){
     return selection("SELECT p.description,smb.brand ,smb.name, pppb.price, p.picture, p.code as productCode, smb.code as branch FROM Product  p
@@ -33,6 +43,40 @@ function productComparison($productCodes, $branchesCodes){
     where p.code in (" . convertArrayToSqlFilter($productCodes) . ")
     AND smb.code in (" . convertArrayToSqlFilter($branchesCodes) . ")
     ORDER BY p.subcategory, p.code, pppb.price");
+}
+
+function insertProduct($productCode, $productDescr, $imageLabel, $productSubcategory){
+    executeQuery("INSERT INTO Product (code,picture,description,subcategory) VALUES 
+                    ('". $productCode ."',
+                     '". $imageLabel ."',
+                     '". $productDescr ."',
+                     '". $productSubcategory ."')");
+}
+
+
+function insertPriceForProduct($productCode, $brand, $price){
+    executeQuery("INSERT INTO Product_price_per_brand (product,brand,price) VALUES 
+                    ('". $productCode ."',
+                     '". $brand ."',
+                     '". $price ."')");
+}
+
+function insertBranch($code, $name, $city, $postalCode, $tel, $email, $brand){
+    executeQuery("INSERT INTO Super_market_branch (code, name, city, postal_code, telephone_no, email, brand )  VALUES 
+                    ('". $code ."',
+                     '". $name ."',
+                     '". $city ."',
+                     '". $postalCode ."',
+                     '". $tel ."',
+                     '". $email ."',
+                     '". $brand ."')");
+}
+
+function insertProductSubcategory($category,$code, $name){
+    executeQuery("INSERT INTO Product_subcategory (code,description,category) VALUES 
+                    ('". $code ."',
+                     '". $name ."',
+                     '". $category ."')");
 }
 
 function cartProducts($productIds){
@@ -52,6 +96,12 @@ function selection(string $query){
     $rows = $result->fetch_all(MYSQLI_ASSOC);
     $conn->close();
     return $rows;
+}
+
+function executeQuery(string $query){
+    $conn = DbConnection();
+    $result = $conn->query($query);
+    $conn->close();
 }
 
 function countResults(string $query){
@@ -76,5 +126,6 @@ function authenticateUser($username, $password){
     }
     return false;
 }
- 
+
+//insertProduct("YOGURT", "Γιαούρτι", "yogurt.png","Dairy_products");
 ?>

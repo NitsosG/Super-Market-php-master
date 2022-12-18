@@ -1,5 +1,27 @@
 <?php 
 
+function inputFormField($label, $name, $type,$required){
+    $requiredStr = "false";
+    if($required == true){
+        $requiredStr = "true";
+    }
+    echo '<div class="form-group">' ;
+    echo '<label for="' . $name . '">' . $label . ':</label>';
+    echo '<input class="form-control" type="'.$type.'" id="' . $name .'"name="'. $name .'" required="'.$requiredStr.'">';
+    echo '</div>';
+}
+
+function inputFormSelect($label, $name, $rows){
+    echo '<div class="form-group">' ;
+    echo '<label for="' . $name . '">' . $label . ':</label>';
+    echo '<select class="form-control" id=' . $name. ' name='. $name .' >';
+    foreach ($rows as $row) {
+        printf("<option value='%s'>%s</option>",$row["code"], $row["name"]);
+    }
+    echo '</select>';
+    echo '</div>';
+}
+
 function checkbox($label, $class, $rows, $jsFunction){
     echo '<div class="form-field">' ;
     echo $label . '<br>';    

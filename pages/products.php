@@ -34,7 +34,6 @@
 </div>
 
 <div class="row">
-  <!-- <?php include 'menu.php';?> -->
   <div class="col-6 col-s-9">
     <?php
       checkbox("Κατηγορία","product-category",productCategorySelection(),"getProductSubcategories()");
